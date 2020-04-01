@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author: lxl
  * @create: 2020-03-25 16:46
  **/
-@FeignClient(value = "cloud-provider-user") // 调用的服务的名称
+@FeignClient(value = "cloud-provider-user", fallback = EurekaFeignFailService.class) // 调用的服务的名称
 public interface EurekaFeignService {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)

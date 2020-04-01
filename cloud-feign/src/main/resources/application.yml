@@ -2,7 +2,10 @@ server:
   port: 9101
 spring:
   application:
-    name: cloud-fegin
+    name: cloud-feign
+feign:
+  hystrix:
+    enabled: true
 eureka:
   client:
     serviceUrl:
