@@ -1,5 +1,6 @@
 package com.lxl.cloudribbon.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,6 +16,7 @@ public class EurekaRibbonService {
     @Autowired
     RestTemplate restTemplate;
 
+    @HystrixCommand(fallbackMethod = "getInfoFailure")
     public String getInfo() {
         String message;
         try {
@@ -25,6 +27,16 @@ public class EurekaRibbonService {
         } catch (Exception ex) {
             message = ex.getMessage();
         }
+        return message;
+    }
+
+    /**
+     * 服务 EUREKA-PROVIDER/hello 调用失败的回调方法
+     *
+     * @return
+     */
+    public String getInfoFailure() {
+        String message = "网络繁忙，请稍后再试-_-。PS：服务消费者自己提供的信息";
         return message;
     }
 

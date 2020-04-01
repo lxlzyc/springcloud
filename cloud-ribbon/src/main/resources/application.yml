@@ -19,4 +19,4 @@ eureka:
      # 该值至少应该大于 leaseRenewalIntervalInSeconds
      lease-expiration-duration-in-seconds: 10
      prefer-ip-address: true
-     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port
+     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
