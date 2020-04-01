@@ -1,0 +1,10 @@
+# 工程配置文件
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    config:
+      label: master
+      profile: dev
+      fail-fast: true
+      uri: http://localhost:9501
